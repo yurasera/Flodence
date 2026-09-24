@@ -23,10 +23,15 @@ struct EvidenceView: View {
 
             Section("Evidence") {
                 ObserveNoteCard()
+                    .listRowInsets(cardInsets)
                 LearnerResponseCard()
+                    .listRowInsets(cardInsets)
                 DifficultyCard()
+                    .listRowInsets(cardInsets)
                 PerformanceCard()
+                    .listRowInsets(cardInsets)
                 ProgressCard()
+                    .listRowInsets(cardInsets)
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
@@ -48,33 +53,17 @@ struct EvidenceView: View {
             AddEvidenceView(learnerName: learnerName)
         }
     }
+
+    private var cardInsets: EdgeInsets {
+        EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16)
+    }
 }
 
 private struct ObserveNoteCard: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Label("Observe Note", systemImage: "eye.fill")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.teal)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
-                    .background(Color.teal.opacity(0.14), in: Capsule())
-                Spacer()
-                Text("Today").font(.caption).foregroundStyle(.secondary)
-            }
-
-            VStack(alignment: .leading, spacing: 6) {
-                Text("Text Note").font(.caption.weight(.medium)).foregroundStyle(.secondary)
-                Text("Needed a reminder to check layout behaviour at smaller screen widths.")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-
+        EvidenceCard(title: "Observe Note", symbol: "eye.fill", color: .teal) {
+            EvidenceText(label: "Text Note", value: "Needed a reminder to check layout behaviour at smaller screen widths.")
         }
-        .padding(16)
-        .background(.background, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .shadow(color: .black.opacity(0.05), radius: 8, y: 3)
     }
 }
 
@@ -130,6 +119,7 @@ private struct EvidenceCard<Content: View>: View {
             content
         }
         .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(.background, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         .shadow(color: .black.opacity(0.05), radius: 8, y: 3)
     }

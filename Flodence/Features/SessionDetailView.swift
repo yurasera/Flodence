@@ -5,7 +5,8 @@ struct SessionDetailView: View {
         ("Alya Rahman", "AR", Color.pink),
         ("Bima Santoso", "BS", Color.blue),
         ("Citra Maheswari", "CM", Color.orange),
-        ("Dimas Pratama", "DP", Color.teal)
+        ("Dimas Pratama", "DP", Color.teal),
+        ("Yura", "YR", Color.purple)
     ]
 
     var body: some View {
