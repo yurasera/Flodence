@@ -18,18 +18,19 @@ struct SessionDetailView: View {
 
             Section("16 learners") {
                 ForEach(learners, id: \.0) { learner in
-                    HStack(spacing: 12) {
-                        Avatar(initials: learner.1, color: learner.2)
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(learner.0).font(.headline)
-                            Text("Web Development").font(.subheadline).foregroundStyle(.secondary)
+                    NavigationLink {
+                        EvidenceView(learnerName: learner.0, initials: learner.1, color: learner.2)
+                    } label: {
+                        HStack(spacing: 12) {
+                            Avatar(initials: learner.1, color: learner.2)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(learner.0).font(.headline)
+                                Text("Web Development").font(.subheadline).foregroundStyle(.secondary)
+                            }
+                            Spacer()
                         }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.footnote.weight(.semibold))
-                            .foregroundStyle(.tertiary)
+                        .padding(.vertical, 3)
                     }
-                    .padding(.vertical, 3)
                 }
             }
         }
