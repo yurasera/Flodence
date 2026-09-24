@@ -10,15 +10,21 @@ struct EvidenceView: View {
         List {
             Section {
                 HStack(spacing: 12) {
-                    Avatar(initials: initials, color: color)
+                    Avatar(initials: initials, color: .white)
                     VStack(alignment: .leading, spacing: 3) {
                         Text(learnerName).font(.headline)
                         Text("Web Development · Responsive layouts")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.white.opacity(0.78))
                     }
                 }
-                .padding(.vertical, 3)
+                .foregroundStyle(.white)
+                .padding(16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(AppColor.primary, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .shadow(color: AppColor.primary.opacity(0.18), radius: 8, y: 3)
+                .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 8, trailing: 16))
+                .listRowBackground(Color.clear)
             }
 
             Section("Evidence") {
@@ -61,7 +67,7 @@ struct EvidenceView: View {
 
 private struct ObserveNoteCard: View {
     var body: some View {
-        EvidenceCard(title: "Observe Note", symbol: "eye.fill", color: .teal) {
+        EvidenceCard(title: "Observe Note", symbol: "eye.fill", color: AppColor.primary) {
             EvidenceText(label: "Text Note", value: "Needed a reminder to check layout behaviour at smaller screen widths.")
         }
     }
@@ -69,7 +75,7 @@ private struct ObserveNoteCard: View {
 
 private struct LearnerResponseCard: View {
     var body: some View {
-        EvidenceCard(title: "Learner Response", symbol: "text.bubble.fill", color: AppColor.indigo) {
+        EvidenceCard(title: "Learner Response", symbol: "text.bubble.fill", color: AppColor.primary) {
             EvidenceText(label: "Question / Context", value: "How would the page layout change on a phone screen?")
             EvidenceText(label: "Learner Response", value: "I would stack the sections vertically and adjust the grid columns.")
         }
@@ -78,8 +84,8 @@ private struct LearnerResponseCard: View {
 
 private struct DifficultyCard: View {
     var body: some View {
-        EvidenceCard(title: "Difficulty", symbol: "exclamationmark.circle.fill", color: .orange) {
-            EvidenceText(label: "Difficulty Area", value: "Application", badgeColor: .orange)
+        EvidenceCard(title: "Difficulty", symbol: "exclamationmark.circle.fill", color: AppColor.primary) {
+            EvidenceText(label: "Difficulty Area", value: "Application", badgeColor: AppColor.primary)
             EvidenceText(label: "Text Note", value: "Understands the grid concept but still needs prompts to apply it in a responsive layout.")
         }
     }
@@ -87,9 +93,9 @@ private struct DifficultyCard: View {
 
 private struct PerformanceCard: View {
     var body: some View {
-        EvidenceCard(title: "Performance", symbol: "checkmark.circle.fill", color: .green) {
+        EvidenceCard(title: "Performance", symbol: "checkmark.circle.fill", color: AppColor.primary) {
             EvidenceText(label: "Task", value: "Build a responsive product landing page")
-            EvidenceText(label: "Performance Status", value: "Partial", badgeColor: .orange)
+            EvidenceText(label: "Performance Status", value: "Partial", badgeColor: AppColor.primary)
             EvidenceText(label: "Text Note", value: "Completed the desktop layout and began adapting the navigation for mobile.")
         }
     }
@@ -97,9 +103,9 @@ private struct PerformanceCard: View {
 
 private struct ProgressCard: View {
     var body: some View {
-        EvidenceCard(title: "Progress", symbol: "chart.line.uptrend.xyaxis", color: .purple) {
+        EvidenceCard(title: "Progress", symbol: "chart.line.uptrend.xyaxis", color: AppColor.primary) {
             EvidenceText(label: "Previous State", value: "Guided")
-            EvidenceText(label: "Current State", value: "Developing", badgeColor: .purple)
+            EvidenceText(label: "Current State", value: "Developing", badgeColor: AppColor.primary)
             EvidenceText(label: "Text Note", value: "Can now identify breakpoints with a brief prompt and is starting to make layout decisions independently.")
         }
     }
