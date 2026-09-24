@@ -6,7 +6,8 @@ struct SessionDetailView: View {
         ("Bima Santoso", "BS", Color.blue),
         ("Citra Maheswari", "CM", Color.orange),
         ("Dimas Pratama", "DP", Color.teal),
-        ("Yura", "YR", Color.purple)
+        ("Raymond Leon", "RL", Color.teal),
+        ("Yuhaya Lisera", "YL", Color.purple)
     ]
 
     var body: some View {
@@ -53,31 +54,32 @@ struct SessionDetailView: View {
             HStack(alignment: .top) {
                 Image(systemName: "rectangle.3.group.fill")
                     .font(.title2)
-                    .foregroundStyle(AppColor.indigo)
+                    .foregroundStyle(AppColor.primary)
                     .frame(width: 46, height: 46)
-                    .background(AppColor.indigo.opacity(0.14), in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+                    .background(.white, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Responsive layouts").font(.headline)
                     Text("Web Development · Session 4 of 8")
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.white.opacity(0.78))
                 }
                 Spacer()
             }
 
-            Divider()
+            Rectangle().fill(.white.opacity(0.32)).frame(height: 1)
 
             HStack(spacing: 0) {
-                SessionInfo(symbol: "calendar", title: "Tuesday", subtitle: "October 1")
-                Divider().frame(height: 36)
-                SessionInfo(symbol: "clock", title: "10:00", subtitle: "90 minutes")
-                Divider().frame(height: 36)
-                SessionInfo(symbol: "mappin.and.ellipse", title: "Lab 2", subtitle: "On campus")
+                SessionInfo(symbol: "calendar", title: "Tuesday", subtitle: "October 1", isOnPrimary: true)
+                Rectangle().fill(.white.opacity(0.32)).frame(width: 1, height: 36)
+                SessionInfo(symbol: "clock", title: "10:00", subtitle: "90 minutes", isOnPrimary: true)
+                Rectangle().fill(.white.opacity(0.32)).frame(width: 1, height: 36)
+                SessionInfo(symbol: "mappin.and.ellipse", title: "Lab 2", subtitle: "On campus", isOnPrimary: true)
             }
         }
         .padding(18)
-        .background(.background, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .shadow(color: .black.opacity(0.05), radius: 10, y: 4)
+        .foregroundStyle(.white)
+        .background(AppColor.primary, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .shadow(color: AppColor.primary.opacity(0.22), radius: 10, y: 4)
     }
 }
 
@@ -85,12 +87,13 @@ private struct SessionInfo: View {
     let symbol: String
     let title: String
     let subtitle: String
+    var isOnPrimary = false
 
     var body: some View {
         VStack(spacing: 4) {
-            Image(systemName: symbol).font(.subheadline).foregroundStyle(AppColor.indigo)
+            Image(systemName: symbol).font(.subheadline).foregroundStyle(isOnPrimary ? .white : AppColor.primary)
             Text(title).font(.caption.weight(.semibold))
-            Text(subtitle).font(.caption2).foregroundStyle(.secondary)
+            Text(subtitle).font(.caption2).foregroundStyle(isOnPrimary ? .white.opacity(0.78) : .secondary)
         }
         .frame(maxWidth: .infinity)
     }
