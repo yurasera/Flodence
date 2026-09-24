@@ -114,13 +114,25 @@ private struct SessionsTab: View {
         List {
             Section("Upcoming") {
                 SessionRow(title: "HTML & CSS foundations", time: "Fri, 10:00 · Lab 2", symbol: "calendar.badge.clock", color: .teal)
-                SessionRow(title: "Responsive layouts", time: "Tue, 10:00 · Lab 2", symbol: "calendar", color: AppColor.indigo)
+                NavigationLink {
+                    SessionDetailView()
+                } label: {
+                    SessionRow(title: "Responsive layouts", time: "Tue, 10:00 · Lab 2", symbol: "calendar", color: AppColor.indigo)
+                }
             }
             Section("Completed") {
                 SessionRow(title: "Introduction to the web", time: "Completed · Sep 19", symbol: "checkmark.circle.fill", color: .green)
             }
         }
         .listStyle(.insetGrouped)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button { } label: {
+                    Image(systemName: "plus")
+                }
+                .accessibilityLabel("Add session")
+            }
+        }
     }
 }
 
