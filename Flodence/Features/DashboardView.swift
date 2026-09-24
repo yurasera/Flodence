@@ -21,7 +21,7 @@ struct DashboardView: View {
             .background(Color(uiColor: .systemGroupedBackground))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) { Text("Flodence").font(.title2.weight(.bold)).foregroundStyle(AppColor.ink) }
+                ToolbarItem(placement: .topBarLeading) { Text("YR").font(.title2.weight(.bold)).foregroundStyle(AppColor.ink) }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { } label: { Image(systemName: "bell").font(.body.weight(.semibold)) }
                         .accessibilityLabel("Notifications")
@@ -31,8 +31,8 @@ struct DashboardView: View {
     }
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Wednesday, September 24").font(.subheadline).foregroundStyle(.secondary)
-            Text("Good morning, Yuhaya").font(.largeTitle.bold()).foregroundStyle(AppColor.ink)
+            Text("Friday, September 25").font(.subheadline).foregroundStyle(.secondary)
+            Text("Good morning, Yura").font(.largeTitle.bold()).foregroundStyle(AppColor.ink)
         }.padding(.top, 12)
     }
     private var progressCard: some View {
