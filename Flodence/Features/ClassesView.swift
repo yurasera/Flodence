@@ -7,7 +7,11 @@ struct ClassesView: View {
                 Section("Active classes") {
                     ClassListRow(title: "Desain Grafis", subtitle: "24 learners · Next: Today, 08:00", color: .orange)
                     ClassListRow(title: "Coding Games", subtitle: "18 learners · Next: Today, 10:00", color: AppColor.indigo)
-                    ClassListRow(title: "Web Development", subtitle: "16 learners · Next: Fri, 10:00", color: .teal)
+                    NavigationLink {
+                        ClassDetailView()
+                    } label: {
+                        ClassListRow(title: "Web Development", subtitle: "16 learners · Next: Fri, 10:00", color: .teal)
+                    }
                 }
                 Section("Drafts") { ClassListRow(title: "Mobile Development", subtitle: "8 learners · Not published", color: .gray) }
             }
