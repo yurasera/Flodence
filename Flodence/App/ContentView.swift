@@ -17,13 +17,14 @@ struct ContentView: View {
             LearnersView()
                 .tabItem { Label("Learners", systemImage: "person.2.fill") }
         }
-        .tint(AppColor.indigo)
+        .tint(AppColor.primary)
     }
 }
 
 enum AppColor {
-    static let indigo = Color(red: 0.29, green: 0.30, blue: 0.82)
-    static let lavender = Color(red: 0.94, green: 0.94, blue: 1.0)
+    static let primary = Color(red: 159.0 / 255.0, green: 102.0 / 255.0, blue: 175.0 / 255.0)
+    static let indigo = primary
+    static let lavender = Color(red: 0.97, green: 0.92, blue: 0.98)
     static let ink = Color(red: 0.10, green: 0.11, blue: 0.18)
 }
 

@@ -38,12 +38,12 @@ struct DashboardView: View {
     private var progressCard: some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 5) { Text("This week").font(.headline); Text("Keep your teaching rhythm going.").font(.subheadline).foregroundStyle(.secondary) }
+                VStack(alignment: .leading, spacing: 5) { Text("This week").font(.headline); Text("Keep your teaching rhythm going.").font(.subheadline).foregroundStyle(.white.opacity(0.78)) }
                 Spacer()
-                Image(systemName: "chart.line.uptrend.xyaxis").font(.title2).foregroundStyle(AppColor.indigo).padding(10).background(AppColor.lavender, in: Circle())
+                Image(systemName: "chart.line.uptrend.xyaxis").font(.title2).foregroundStyle(AppColor.primary).padding(10).background(.white, in: Circle())
             }
-            HStack(spacing: 0) { Metric(value: "12", label: "Classes"); Divider().frame(height: 38); Metric(value: "86", label: "Learners"); Divider().frame(height: 38); Metric(value: "94%", label: "Attendance") }
-        }.padding(20).background(.background, in: RoundedRectangle(cornerRadius: 24, style: .continuous)).shadow(color: .black.opacity(0.06), radius: 14, y: 5)
+            HStack(spacing: 0) { Metric(value: "12", label: "Classes", isOnPrimary: true); Rectangle().fill(.white.opacity(0.32)).frame(width: 1, height: 38); Metric(value: "86", label: "Learners", isOnPrimary: true); Rectangle().fill(.white.opacity(0.32)).frame(width: 1, height: 38); Metric(value: "94%", label: "Attendance", isOnPrimary: true) }
+        }.padding(20).foregroundStyle(.white).background(AppColor.primary, in: RoundedRectangle(cornerRadius: 24, style: .continuous)).shadow(color: AppColor.primary.opacity(0.22), radius: 14, y: 5)
     }
     private var learnerPreview: some View {
         HStack(spacing: 12) { Avatar(initials: "AR", color: .pink); VStack(alignment: .leading, spacing: 3) { Text("Alya Rahman").font(.headline); Text("Completed 8 of 10 activities").font(.subheadline).foregroundStyle(.secondary) }; Spacer(); Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary) }
@@ -51,6 +51,6 @@ struct DashboardView: View {
     }
 }
 
-private struct Metric: View { let value: String; let label: String; var body: some View { VStack(spacing: 3) { Text(value).font(.title3.bold()).foregroundStyle(AppColor.ink); Text(label).font(.caption).foregroundStyle(.secondary) }.frame(maxWidth: .infinity) } }
+private struct Metric: View { let value: String; let label: String; var isOnPrimary = false; var body: some View { VStack(spacing: 3) { Text(value).font(.title3.bold()).foregroundStyle(isOnPrimary ? .white : AppColor.ink); Text(label).font(.caption).foregroundStyle(isOnPrimary ? .white.opacity(0.78) : .secondary) }.frame(maxWidth: .infinity) } }
 private struct ClassRow: View { let time: String; let title: String; let detail: String; let color: Color; var body: some View { HStack(spacing: 14) { Text(time).font(.subheadline.weight(.bold)).foregroundStyle(color).frame(width: 46, alignment: .leading); Rectangle().fill(color).frame(width: 4).clipShape(Capsule()); VStack(alignment: .leading, spacing: 3) { Text(title).font(.headline).foregroundStyle(AppColor.ink); Text(detail).font(.subheadline).foregroundStyle(.secondary) }; Spacer(minLength: 0) }.padding(16).background(.background, in: RoundedRectangle(cornerRadius: 18, style: .continuous)) } }
 private func sectionTitle(_ title: String, action: String) -> some View { HStack { Text(title).font(.title3.bold()).foregroundStyle(AppColor.ink); Spacer(); Button(action) { }.font(.subheadline.weight(.semibold)) } }
