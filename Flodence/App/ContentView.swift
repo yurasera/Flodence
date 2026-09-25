@@ -9,10 +9,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             DashboardView()
-                .tabItem { Label("Dashboard", systemImage: "square.grid.2x2.fill") }
-
-            ClassesView()
-                .tabItem { Label("Classes", systemImage: "book.closed.fill") }
+                .tabItem { Label("Classes", systemImage: "square.grid.2x2.fill") }
 
             LearnersView()
                 .tabItem { Label("Learners", systemImage: "person.2.fill") }
